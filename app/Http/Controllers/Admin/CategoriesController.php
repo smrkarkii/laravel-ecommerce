@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoriesController extends Controller
 {
@@ -14,7 +15,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        
+        $categories=Category::latest()->get();
+        return view('admin/category/index',compact('categories'));
     }
 
     /**
@@ -24,7 +27,16 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+       $categories=Category::all();
+       return view('admin/category/create',compact('categories'));
+    
+
+        // $category=new Category;
+        // $category->name=$request->input('name');
+        // $category->description=$request->input('description');
+        // $category->slug=$request->input('slug');
+        // $category->category_id=$request->input('category_id');
+
     }
 
     /**
@@ -35,7 +47,28 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name'=>'required|max:250|unique:categories',
+            'description'=>'required',
+            
+            //'category_id'=>'required|integer|min:1',
+        ]);
+            $slug=strtolower(str_replace(' ','-',$request->input('name')));
+            $category=new category;
+           
+            $category->name=$request->input('name');
+            $category->description=$request->input('description');
+            $category->slug=$request->input('slug');
+            $category->parent_id=$request->input('parent_id');
+            $category->slug=$slug;
+            $category->save();
+        
+            if($category->save()){
+                return redirect()->route('category_list');
+            }
+                else{
+                    return redirect()->back();
+                }
     }
 
     /**

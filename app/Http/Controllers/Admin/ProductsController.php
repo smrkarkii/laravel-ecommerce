@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\StorePostRequest;
+use Intervention\Image\Facades\Image;
 
 
 class ProductsController extends Controller
@@ -39,12 +40,12 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     {  
         //return $request;
 
         $validated = $request->validate([
-        'product_name'=>'required|max:250|unique:product',
+        'product_name'=>'required|max:250|unique:products',
         'product_desc'=>'required',
         'price'=>'required',
         //'category_id'=>'required|integer|min:1',
@@ -60,6 +61,7 @@ class ProductsController extends Controller
         if($request->hasfile('image')) {
             $name=$request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/images',$name);
+            image_crop($name,550,750);
             $product->image=$name;
          } 
          

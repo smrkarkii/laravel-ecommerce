@@ -13,7 +13,7 @@
         @endif
 
            
-         <form method="POST" action="{{route('products.store')}}" enctype="multipart/form-data">
+         <form method="POST" action="{{route('categories.store')}}" enctype="multipart/form-data">
             @csrf
             
             
@@ -27,16 +27,16 @@
          Product Desc: <textarea name="product_desc" id="" cols="20" rows="5" class="form-control" value="" {{old('product_desc')}}></textarea><br>
           Price: <input type="text" name="price" id="" class="form-control" value="" {{old('price')}}><br>
            Category: 
-           <x-forms.select name="parent_id" class="form-control">
+           <x-forms.select name="category_id" class="form-control">
       
            <option value="0">Select a category</option>
            @foreach ($categories as $category)
-            <option value="{{$category->id}}"{{$category->id==old('parent_id')?"selected":''}}>{{$category->name}}</option>
+            <option value="{{$category->id}}" {{$category->id == old('category_id') ? "selected": '' }}>{{$category->name}}</option>
              @endforeach
    
          </x-forms.select><br>
           <input type ="submit" name="Submit" value="Save" class="form-control">
-          <input type="file" name="image" id="">
+         
          </form>
         </div>
       </div>

@@ -79,11 +79,13 @@
                                             <div class="single-product">
                                                 <div class="product-img">
                                                     <a href="product-details.html">
-                                                        @php
-                                                            $product_image=image_crop('/storage/images/'.$product->image,550,750);
-                                                        @endphp
-                                                        <img class="default-img" src={{$product->image:''? '/images/1.jpg':asset($product_image)}}">
-                                                        <img class="hover-img" src={{$product->image:''? '/images/1.jpg':asset($product_image)}}">
+                                                        {{-- @if($product->image!='')
+                                                        {{image_crop($product->image)}}
+                                                        @endif --}}
+                                                        
+                                                        {{-- <img class="default-img" src="{{ $product->image == ' ' ? 'https://via.placeholder.com/550x750': image_crop($product->image) }}" alt="#"> --}}
+                                                        <img class="default-img" src="{{$product->image==''? 'https://via.placeholder.com/550x750':image_crop($product->image)}}">
+                                                        <img class="hover-img" src={{$product->image==''? 'https://via.placeholder.com/550x750':asset('storage/images/thumbnail/'.$product->image)}}">
                                                     </a>
                                                     <div class="button-head">
                                                         <div class="product-action">

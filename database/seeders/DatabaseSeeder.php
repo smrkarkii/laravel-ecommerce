@@ -15,15 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     { $categ= \App\Models\Category::create([
-        'name'=>'Charger',
-        'description'=>'This includes Charger.'
+        'name'=>'Accessories',
+        'description'=>'This includes different items.'
     ]
 
     );
     
 
     Product::factory(6)->create([
-      'category_id'=>3
+      'category_id'=>4
       ]);
 }
 }
