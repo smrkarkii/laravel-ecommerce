@@ -33,7 +33,7 @@
            @foreach ($categories as $category)
             <option value="{{$category->id}}" {{$category->id == old('category_id') ? "selected": '' }}>{{$category->name}}</option>
              @endforeach
-   
+          <input type="file" name="image" >
          </x-forms.select><br>
           <input type ="submit" name="Submit" value="Save" class="form-control">
          

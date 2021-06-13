@@ -14,7 +14,9 @@
           </div>
      @endif
              <h2>Update Product:{{$product->product_name}}</h2>
-          <form action="/admin/product/store" method="POST">
+             {{-- @can('update-product',$product) --}}
+          <form action="{{route('admin.products.update',$product->id)}}" method="POST">
+            @method('PUT')
             @csrf
          Product Name: <input type="text" name="product_name" id="" class="form-control" value="{{$product->product_name}}"><br><br>
           Product Desc: <textarea name="product_desc" id="" cols="20" rows="5" class="form-control" value="{{$product->product_desc}}"></textarea><br>
@@ -32,6 +34,10 @@
           </x-forms.select><br>
            <input type ="submit" name="Submit" value="Save" class="form-control">
           </form>
+          {{-- @else
+          You are not authorized user of this product.
+          @endcan --}}
+        
          </div>
        </div>
     </div>

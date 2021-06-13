@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateProductsTable extends Migration
+class Users extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class UpdateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-          $table->string('image');
+        Schema::table('Products', function (Blueprint $table) {
+            $table->foreignId('user_id')->default(1)->constrained('users');
         });
     }
 
@@ -25,9 +25,8 @@ class UpdateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('create_products_table', function (Blueprint $table) {
+        Schema::table('Products', function (Blueprint $table) {
             //
         });
     }
 }
-

@@ -117,7 +117,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="images/logo.png" alt="logo"></a>
+							<a href="index.html"><img src="/images/logo.png" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
@@ -136,8 +136,11 @@
 						<div class="mobile-nav"></div>
 					</div>
 					<div class="col-lg-8 col-md-7 col-12">
-						@include('includes/search')
+						@include('includes.search')
 					</div>
+						
+					
+					
 					<div class="col-lg-2 col-md-3 col-12">
 						<div class="right-bar">
 							<!-- Search Form -->
@@ -153,7 +156,7 @@
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
 										<span>2 Items</span>
-										<a href="#">View Cart</a>
+										<a href="{{route('order')}}">View Cart</a>
 									</div>
 									<ul class="shopping-list">
 										<li>
@@ -222,7 +225,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="index.html"><img src="images/logo2.png" alt="#"></a>
+								<a href="index.html"><img src="/images/logo2.png" alt="#"></a>
 							</div>
 							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
 							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
@@ -295,7 +298,7 @@
 						</div>
 						<div class="col-lg-6 col-12">
 							<div class="right">
-								<img src="images/payments.png" alt="#">
+								<img src="/images/payments.png" alt="#">
 							</div>
 						</div>
 					</div>

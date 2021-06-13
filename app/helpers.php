@@ -1,5 +1,6 @@
 <?php
 use Intervention\Image\Facades\Image;
+use App\Models\Category;
 
     
 if(!function_exists('image_crop')){
@@ -14,4 +15,9 @@ if(!function_exists('image_crop')){
         } 
         return asset('storage/images/thumbnail/'.$image_name);
     }
+}
+if(!function_exists('categories_list')){
+    function categories_list(){
+    return Category::whereParent_id(0)->get();
+}
 }
